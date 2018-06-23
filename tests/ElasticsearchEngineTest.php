@@ -18,7 +18,7 @@ class ElasticsearchEngineTest extends PHPUnit_Framework_TestCase
                 [
                     'update' => [
                         '_id' => 1,
-                        '_index' => 'scout',
+                        '_index' => 'table',
                         '_type' => 'table',
                     ]
                 ],
@@ -29,7 +29,7 @@ class ElasticsearchEngineTest extends PHPUnit_Framework_TestCase
             ]
         ]);
 
-        $engine = new ElasticsearchEngine($client, 'scout');
+        $engine = new ElasticsearchEngine($client);
         $engine->update(Collection::make([new ElasticsearchEngineTestModel]));
     }
 
@@ -41,14 +41,14 @@ class ElasticsearchEngineTest extends PHPUnit_Framework_TestCase
                 [
                     'delete' => [
                         '_id' => 1,
-                        '_index' => 'scout',
+                        '_index' => 'table',
                         '_type' => 'table',
                     ]
                 ],
             ]
         ]);
 
-        $engine = new ElasticsearchEngine($client, 'scout');
+        $engine = new ElasticsearchEngine($client);
         $engine->delete(Collection::make([new ElasticsearchEngineTestModel]));
     }
 
@@ -56,8 +56,7 @@ class ElasticsearchEngineTest extends PHPUnit_Framework_TestCase
     {
         $client = Mockery::mock('Elasticsearch\Client');
         $client->shouldReceive('search')->with([
-            'index' => 'scout',
-            'type' => 'table',
+            'index' => 'table',
             'body' => [
                 'query' => [
                     'bool' => [
@@ -74,7 +73,7 @@ class ElasticsearchEngineTest extends PHPUnit_Framework_TestCase
             ]
         ]);
 
-        $engine = new ElasticsearchEngine($client, 'scout');
+        $engine = new ElasticsearchEngine($client);
         $builder = new Laravel\Scout\Builder(new ElasticsearchEngineTestModel, 'zonda');
         $builder->where('foo', 1);
         $builder->where('bar', [1, 3]);
