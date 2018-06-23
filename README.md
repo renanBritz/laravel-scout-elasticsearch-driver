@@ -9,6 +9,7 @@ Package is based on tamayo/laravel-scout-elastic, and created to replace [depece
 ## Contents
 
 - [Installation](#installation)
+- [Migration](#migration)
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
@@ -45,6 +46,8 @@ After you've published the Laravel Scout package configuration update config/sco
     ],
 ...
 ```
+## Migration
+If you are migrating from ErickTamayo/laravel-scout-elastic, keep in mind that instead of `config('scout.elasticsearch.index')` this package is using `searchableAs()` method to get index name. By default it will return model `config('scout.prefix').$this->getTable();`. Your new data will be stored under different indexes so you will need to reindex everything.
 
 ## Usage
 
