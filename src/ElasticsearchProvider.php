@@ -2,9 +2,9 @@
 
 namespace ScoutEngines\Elasticsearch;
 
-use Laravel\Scout\EngineManager;
-use Illuminate\Support\ServiceProvider;
 use Elasticsearch\ClientBuilder as ElasticBuilder;
+use Illuminate\Support\ServiceProvider;
+use Laravel\Scout\EngineManager;
 
 class ElasticsearchProvider extends ServiceProvider
 {
