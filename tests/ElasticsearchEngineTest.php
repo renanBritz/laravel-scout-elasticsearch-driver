@@ -17,20 +17,20 @@ class ElasticsearchEngineTest extends PHPUnit_Framework_TestCase
             'body' => [
                 [
                     'update' => [
-                        '_id' => 1,
+                        '_id'    => 1,
                         '_index' => 'table',
-                        '_type' => 'table',
-                    ]
+                        '_type'  => 'table',
+                    ],
                 ],
                 [
-                    'doc' => ['id' => 1 ],
-                    'doc_as_upsert' => true
-                ]
-            ]
+                    'doc'           => ['id' => 1],
+                    'doc_as_upsert' => true,
+                ],
+            ],
         ]);
 
         $engine = new ElasticsearchEngine($client);
-        $engine->update(Collection::make([new ElasticsearchEngineTestModel]));
+        $engine->update(Collection::make([new ElasticsearchEngineTestModel()]));
     }
 
     public function test_delete_removes_objects_to_index()
@@ -40,16 +40,16 @@ class ElasticsearchEngineTest extends PHPUnit_Framework_TestCase
             'body' => [
                 [
                     'delete' => [
-                        '_id' => 1,
+                        '_id'    => 1,
                         '_index' => 'table',
-                        '_type' => 'table',
-                    ]
+                        '_type'  => 'table',
+                    ],
                 ],
-            ]
+            ],
         ]);
 
         $engine = new ElasticsearchEngine($client);
-        $engine->delete(Collection::make([new ElasticsearchEngineTestModel]));
+        $engine->delete(Collection::make([new ElasticsearchEngineTestModel()]));
     }
 
     public function test_search_sends_correct_parameters_to_elasticsearch()
@@ -57,24 +57,24 @@ class ElasticsearchEngineTest extends PHPUnit_Framework_TestCase
         $client = Mockery::mock('Elasticsearch\Client');
         $client->shouldReceive('search')->with([
             'index' => 'table',
-            'body' => [
+            'body'  => [
                 'query' => [
                     'bool' => [
                         'must' => [
                             ['query_string' => ['query' => '*zonda*']],
                             ['match_phrase' => ['foo' => 1]],
-                            ['terms' => ['bar' => [1, 3]]],
-                        ]
-                    ]
+                            ['terms'        => ['bar' => [1, 3]]],
+                        ],
+                    ],
                 ],
                 'sort' => [
-                    ['id' => 'desc']
-                ]
-            ]
+                    ['id' => 'desc'],
+                ],
+            ],
         ]);
 
         $engine = new ElasticsearchEngine($client);
-        $builder = new Laravel\Scout\Builder(new ElasticsearchEngineTestModel, 'zonda');
+        $builder = new Laravel\Scout\Builder(new ElasticsearchEngineTestModel(), 'zonda');
         $builder->where('foo', 1);
         $builder->where('bar', [1, 3]);
         $builder->orderBy('id', 'desc');
@@ -111,17 +111,17 @@ class ElasticsearchEngineTest extends PHPUnit_Framework_TestCase
         $model = Mockery::mock('Illuminate\Database\Eloquent\Model');
         $model->shouldReceive('getKeyName')->andReturn('id');
         $model->shouldReceive('whereIn')->once()->with('id', ['1'])->andReturn($model);
-        $model->shouldReceive('get')->once()->andReturn(Collection::make([new ElasticsearchEngineTestModel]));
+        $model->shouldReceive('get')->once()->andReturn(Collection::make([new ElasticsearchEngineTestModel()]));
 
         $results = $engine->map([
             'hits' => [
                 'total' => '1',
-                'hits' => [
+                'hits'  => [
                     [
-                        '_id' => '1'
-                    ]
-                ]
-            ]
+                        '_id' => '1',
+                    ],
+                ],
+            ],
         ], $model);
 
         $this->assertEquals(1, count($results));
