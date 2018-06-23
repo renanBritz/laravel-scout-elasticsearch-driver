@@ -13,11 +13,11 @@ class ElasticsearchProvider extends ServiceProvider
      */
     public function boot()
     {
-        app(EngineManager::class)->extend('elasticsearch', function($app) {
-            return new ElasticsearchEngine(ElasticBuilder::create()
+        app(EngineManager::class)->extend('elasticsearch', function ($app) {
+            return new ElasticsearchEngine(
+                ElasticBuilder::create()
                 ->setHosts(config('scout.elasticsearch.hosts'))
-                ->build(),
-                config('scout.elasticsearch.index')
+                ->build()
             );
         });
     }
