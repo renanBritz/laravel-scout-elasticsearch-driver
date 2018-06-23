@@ -53,7 +53,7 @@ Now you can use Laravel Scout as described in the [official documentation](https
 ## Credits
 
 - [Erick Tamayo](https://github.com/ericktamayo) and [Contributors](https://github.com/ErickTamayo/laravel-scout-elastic/contributors)
-- [Michael Slowik](https://github.com/ericktamayo)
+- [Michael Slowik](https://github.com/sl0wik)
 
 ## License
 
