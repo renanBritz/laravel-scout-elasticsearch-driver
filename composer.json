@@ -1,5 +1,5 @@
 {
-    "name": "renanBritz/laravel-scout-elasticsearch-driver",
+    "name": "renan-britz/laravel-scout-elasticsearch-driver",
     "description": "Elasticsearch Driver for Laravel Scout with multi-index support.",
     "keywords": ["laravel", "scout", "elasticsearch", "elastic"],
     "license": "MIT",

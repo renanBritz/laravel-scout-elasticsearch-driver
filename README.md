@@ -6,7 +6,7 @@ This is the [Elasticsearch](https://www.elastic.co/products/elasticsearch) drive
 
 Additionally, this package adds correction to entity fetching logic.
 
-Package is based on sl0wik/laravel-scout-elasticsearch-driver, and created to replace [depeceated](https://www.elastic.co/guide/en/elasticsearch/reference/master/removal-of-types.html) types, with [Index per document type](https://www.elastic.co/guide/en/elasticsearch/reference/master/removal-of-types.html#_index_per_document_type) solution.
+Package is based on sl0wik/laravel-scout-elasticsearch-driver, and created to replace [deprecated](https://www.elastic.co/guide/en/elasticsearch/reference/master/removal-of-types.html) types, with [Index per document type](https://www.elastic.co/guide/en/elasticsearch/reference/master/removal-of-types.html#_index_per_document_type) solution.
 
 ## Contents
 
@@ -19,7 +19,7 @@ Package is based on sl0wik/laravel-scout-elasticsearch-driver, and created to re
 ## Installation
 
 ``` bash
-composer require renanBritz/laravel-scout-elasticsearch-driver
+composer require renan-britz/laravel-scout-elasticsearch-driver
 ```
 
 Add the Scout service provider and the package service provider in your app.php config:
