@@ -4,7 +4,9 @@
 
 This is the [Elasticsearch](https://www.elastic.co/products/elasticsearch) driver for Laravel Scout with multiple indexes support.
 
-Package is based on tamayo/laravel-scout-elastic, and created to replace [depeceated](https://www.elastic.co/guide/en/elasticsearch/reference/master/removal-of-types.html) types, with [Index per document type](https://www.elastic.co/guide/en/elasticsearch/reference/master/removal-of-types.html#_index_per_document_type) solution.
+Additionally, this package adds correction to entity fetching logic.
+
+Package is based on sl0wik/laravel-scout-elasticsearch-driver, and created to replace [depeceated](https://www.elastic.co/guide/en/elasticsearch/reference/master/removal-of-types.html) types, with [Index per document type](https://www.elastic.co/guide/en/elasticsearch/reference/master/removal-of-types.html#_index_per_document_type) solution.
 
 ## Contents
 
@@ -17,7 +19,7 @@ Package is based on tamayo/laravel-scout-elastic, and created to replace [depece
 ## Installation
 
 ``` bash
-composer require sl0wik/laravel-scout-elasticsearch-driver
+composer require renanBritz/laravel-scout-elasticsearch-driver
 ```
 
 Add the Scout service provider and the package service provider in your app.php config:
@@ -55,6 +57,7 @@ Now you can use Laravel Scout as described in the [official documentation](https
 
 ## Credits
 
+- [Sl0wik](https://github.com/ericktamayo/sl0wik)
 - [Erick Tamayo](https://github.com/ericktamayo) and [Contributors](https://github.com/ErickTamayo/laravel-scout-elastic/contributors)
 - [Michael Slowik](https://github.com/sl0wik)
 
